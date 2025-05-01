@@ -49,3 +49,4 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.
 // routes/web.php
 Route::get('/tattoo', [ProductController::class, 'index'])->name('products.index');
 Route::get('/tattoo/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/danh-muc/{id}', [ProductController::class, 'category'])->name('category.products');

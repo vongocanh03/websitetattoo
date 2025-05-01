@@ -145,7 +145,7 @@
 
         .navbar-nav .nav-item {
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            /* Đường kẻ trắng mờ */
+            flex: 0 0 auto;
         }
 
         .navbar-nav .nav-item:last-child {
@@ -154,7 +154,31 @@
         }
 
         .navbar-nav .nav-link {
-            padding: 12px 0;
+
+            font-size: 14px;
+            padding: 10px 12px;
+        }
+
+        /* Giúp chia đều các mục trong header */
+        .navbar-nav {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE 10+ */
+        }
+
+        .navbar .btn-danger {
+            padding: 10px 14px;
+            font-size: 14px;
+            white-space: nowrap;
+            margin-left: 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
 
@@ -198,6 +222,12 @@
                 height: 100%;
                 object-fit: cover;
             }
+
+            .navbar-nav .nav-link {
+                padding: 10px 12px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
         }
 
         @media (max-width: 991.98px) {
@@ -229,6 +259,15 @@
             .col-md-6 p {
                 font-size: 20px;
             }
+
+            .navbar-nav {
+                flex-direction: column;
+                /* Mobile vẫn giữ dạng danh sách dọc */
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -251,7 +290,7 @@
             <!-- Menu chính -->
             <div class="collapse navbar-collapse order-3 slide-left" id="navbarNav">
                 <div class="d-flex justify-content-between align-items-center d-lg-none mb-3">
-                    <form action="{{ url('/booking') }}" method="GET" class="m-0">
+                    <form action="https://zalo.me/0395352488" class="m-0">
                         <button class="btn btn-danger btn-sm" type="submit">Đặt lịch ngay</button>
                     </form>
                     <button id="closeMenu" class="btn btn-link text-white fs-3" style="border: none;">&times;</button>
@@ -270,12 +309,17 @@
                     </li>
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/#category-' . $category->id) }}">{{ $category->name }}</a>
+                            @if($category->id == 3)
+                                <a class="nav-link"
+                                    href="{{ route('category.products', $category->id) }}">{{ $category->name }}</a>
+                            @else
+                                <a class="nav-link" href="{{ url('/#category-' . $category->id) }}">{{ $category->name }}</a>
+                            @endif
                         </li>
                     @endforeach
 
                 </ul>
-                <form action="{{ url('/booking') }}" method="GET" class="d-flex d-none d-lg-flex">
+                <form action="https://zalo.me/0395352488" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
                 </form>
 
@@ -309,15 +353,15 @@
             document.querySelector('.menu-overlay')?.classList.remove('show');
         });
         document.addEventListener("DOMContentLoaded", function () {
-        // Scroll đến danh mục nếu có hash trong URL
-        const hash = window.location.hash;
-        if (hash && document.querySelector(hash)) {
-            const target = document.querySelector(hash);
-            setTimeout(() => {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }, 300); // Delay để trang kịp render nội dung
-        }
-    });
+            // Scroll đến danh mục nếu có hash trong URL
+            const hash = window.location.hash;
+            if (hash && document.querySelector(hash)) {
+                const target = document.querySelector(hash);
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }, 300); // Delay để trang kịp render nội dung
+            }
+        });
     </script>
 </body>
 

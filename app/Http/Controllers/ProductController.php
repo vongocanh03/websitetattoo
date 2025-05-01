@@ -26,6 +26,16 @@ class ProductController extends Controller
 
         return view('home', compact('categories', 'banners', 'categoryProducts'));
     }
+    public function category($id)
+    {
+        $category = Category::findOrFail($id);
+        $categories = Category::all();
+        $banners = Banner::all();
+        $products = Product::where('category_id', $id)->latest()->paginate(8);
+
+        return view('products.category', compact('category', 'products', 'categories', 'banners'));
+    }
+
     public function index()
     {
         $products = Product::with('category')->get();

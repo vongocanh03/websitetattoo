@@ -300,6 +300,7 @@
             .card-img-top {
                 height: 350px !important;
             }
+            
 
         }
 
@@ -389,7 +390,7 @@
             <!-- Menu chính -->
             <div class="collapse navbar-collapse order-3 slide-left" id="navbarNav">
                 <div class="d-flex justify-content-between align-items-center d-lg-none mb-3">
-                    <form action="{{ url('/booking') }}" method="GET" class="m-0">
+                    <form action="https://zalo.me/0395352488" method="GET" class="m-0">
                         <button class="btn btn-danger btn-sm" type="submit">Đặt lịch ngay</button>
                     </form>
                     <button id="closeMenu" class="btn btn-link text-white fs-3" style="border: none;">&times;</button>
@@ -408,13 +409,19 @@
                     </li>
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="#category-{{ $category->id }}">{{ $category->name }}</a>
+                            @if($category->id == 3)
+                                <a class="nav-link"
+                                    href="{{ route('category.products', $category->id) }}">{{ $category->name }}</a>
+                            @else
+                                <a class="nav-link" href="{{ url('/#category-' . $category->id) }}">{{ $category->name }}</a>
+                            @endif
                         </li>
                     @endforeach
 
 
+
                 </ul>
-                <form action="{{ url('/booking') }}" method="GET" class="d-flex d-none d-lg-flex">
+                <form action="https://zalo.me/0395352488" method="GET" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
                 </form>
 
@@ -484,10 +491,10 @@
     </div>
     <!-- TÁC PHẨM TATTOO -->
     <div class="container my-5" id="product-section">
-    <div id="product-list">
-        @include('partials.product-items', ['categories' => $categories, 'categoryProducts' => $categoryProducts])
+        <div id="product-list">
+            @include('partials.product-items', ['categories' => $categories, 'categoryProducts' => $categoryProducts])
+        </div>
     </div>
-</div>
 
 
 
