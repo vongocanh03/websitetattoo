@@ -12,14 +12,19 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $banners = Banner::all();
-        $products = Product::latest()->paginate(8); // ✅ 8 sản phẩm / trang
 
-        if ($request->ajax()) {
-            return view('partials.product-items', compact('products'))->render();
+        $categoryProducts = [];
+        foreach ($categories as $category) {
+            $categoryProducts[$category->id] = Product::where('category_id', $category->id)
+                ->latest()
+                ->paginate(8, ['*'], 'page_' . $category->id);
         }
 
+        if ($request->ajax()) {
+            return view('partials.product-items', compact('categories', 'categoryProducts'))->render();
+        }
 
-        return view('home', compact('categories', 'banners', 'products'));
+        return view('home', compact('categories', 'banners', 'categoryProducts'));
     }
     public function index()
     {

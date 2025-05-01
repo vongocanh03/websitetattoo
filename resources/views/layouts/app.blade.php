@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Web Xăm Hình')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Orbitron:wght@700&display=swap"
+        rel="stylesheet">
+    @stack('styles')
 
     <style>
-        
-
         @media (max-width: 991px) {
             .navbar-nav .nav-link {
                 margin-right: 10px;
             }
         }
+
         ///////////////
         body {
             margin: 0;
@@ -88,7 +91,7 @@
             background-color: #cc0000;
         }
 
-        
+
 
 
         .navbar-toggler {
@@ -154,11 +157,11 @@
             padding: 12px 0;
         }
 
-        
+
 
 
         @media (min-width: 992px) {
-       
+
             .slide-left {
                 transform: none !important;
                 position: static;
@@ -196,6 +199,7 @@
                 object-fit: cover;
             }
         }
+
         @media (max-width: 991.98px) {
             .custom-navbar {
                 padding-top: 0.25rem !important;
@@ -261,11 +265,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about-section">Giới thiệu</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-section">Đào tạo học viên</a>
+                    </li>
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $category->name }}</a>
+                            <a class="nav-link" href="{{ url('/#category-' . $category->id) }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
+
                 </ul>
                 <form action="{{ url('/booking') }}" method="GET" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
@@ -300,7 +308,16 @@
             document.getElementById('navbarNav').classList.remove('show');
             document.querySelector('.menu-overlay')?.classList.remove('show');
         });
-
+        document.addEventListener("DOMContentLoaded", function () {
+        // Scroll đến danh mục nếu có hash trong URL
+        const hash = window.location.hash;
+        if (hash && document.querySelector(hash)) {
+            const target = document.querySelector(hash);
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }, 300); // Delay để trang kịp render nội dung
+        }
+    });
     </script>
 </body>
 

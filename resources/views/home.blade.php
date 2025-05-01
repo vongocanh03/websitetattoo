@@ -7,6 +7,9 @@
     <title>Web Xăm Hình</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&display=swap" rel="stylesheet">
+
+
 
     <style>
         body {
@@ -117,10 +120,8 @@
             background: #ccc;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        .card-body {
+            background-color: #ff7e7e30;
         }
 
         .card-img-top {
@@ -296,6 +297,9 @@
                 /* Đường kẻ trắng mờ */
             }
 
+            .card-img-top {
+                height: 350px !important;
+            }
 
         }
 
@@ -328,6 +332,41 @@
             .col-md-6 p {
                 font-size: 20px;
             }
+
+        }
+
+        .card-title {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #ff0066;
+            margin-bottom: 0;
+        }
+
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .card-title a:hover {
+            color: #ff7e7e;
+        }
+
+        #product-list .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        #product-list [class^="col-"] {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -364,11 +403,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about-section">Giới thiệu</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-section">Đào tạo học viên</a>
+                    </li>
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $category->name }}</a>
+                            <a class="nav-link" href="#category-{{ $category->id }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
+
+
                 </ul>
                 <form action="{{ url('/booking') }}" method="GET" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
@@ -438,17 +482,12 @@
 
         </div>
     </div>
-
-    <!-- Tác phẩm Tattoo -->
     <!-- TÁC PHẨM TATTOO -->
-    <div class="container my-5">
-        <div class="section-title">
-            <h2>TÁC PHẨM TATTOO</h2>
-        </div>
-        <div id="product-list" class="row">
-            @include('partials.product-items', ['products' => $products])
-        </div>
+    <div class="container my-5" id="product-section">
+    <div id="product-list">
+        @include('partials.product-items', ['categories' => $categories, 'categoryProducts' => $categoryProducts])
     </div>
+</div>
 
 
 
