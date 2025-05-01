@@ -222,28 +222,49 @@
         .intro-heading .text-black {
             color: #000;
         }
+
         .about-image-wrapper {
-                display: inline-block;
-                overflow: hidden;
-                border-radius: 50%;
-                border: 6px solid #ff7e7e;
-                box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-                max-width: 360px;
-                /* tăng kích thước tối đa */
-                width: 100%;
-                aspect-ratio: 1 / 1;
-                transition: transform 0.3s ease;
-            }
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 6px solid #ff7e7e;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+            max-width: 360px;
+            /* tăng kích thước tối đa */
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            transition: transform 0.3s ease;
+        }
 
-            .about-image-wrapper:hover {
-                transform: scale(1.05);
-            }
+        .about-image-wrapper:hover {
+            transform: scale(1.05);
+        }
 
-            .img-about {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+        .img-about {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pagination {
+            justify-content: center;
+        }
+
+        .pagination .page-link {
+            padding: 6px 12px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #ff7e7e;
+            border-color: #ff7e7e;
+            color: white;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #f0f0f0;
+        }
 
         @media (min-width: 992px) {
             .banner-img {
@@ -275,7 +296,7 @@
                 /* Đường kẻ trắng mờ */
             }
 
-           
+
         }
 
         @media (max-width: 991.98px) {
@@ -419,41 +440,17 @@
     </div>
 
     <!-- Tác phẩm Tattoo -->
+    <!-- TÁC PHẨM TATTOO -->
     <div class="container my-5">
         <div class="section-title">
             <h2>TÁC PHẨM TATTOO</h2>
         </div>
-        <div class="row">
-            @foreach($products as $product)
-                        <div class="col-12 col-sm-6 col-md-4 mb-4">
-                            <div class="card shadow-sm border-0 h-100">
-                                <a href="{{ route('products.show', $product->id) }}">
-                                    @php
-                                        $extension = strtolower(pathinfo($product->media, PATHINFO_EXTENSION));
-                                    @endphp
-                                    @if(in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-                                        <img src="{{ asset('storage/' . $product->media) }}" class="card-img-top"
-                                            alt="{{ $product->name }}" style="height: 300px; object-fit: cover;">
-                                    @elseif(in_array($extension, ['mp4', 'avi', 'mov']))
-                                        <video class="card-img-top" controls style="height: 300px; object-fit: cover;">
-                                            <source src="{{ asset('storage/' . $product->media) }}" type="video/{{ $extension }}">
-                                            Trình duyệt không hỗ trợ video.
-                                        </video>
-                                    @endif
-                                </a>
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">
-                                        <a href="{{ route('products.show', $product->id) }}"
-                                            style="text-decoration: none; color: inherit;">
-                                            {{ $product->name }}
-                                        </a>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-            @endforeach
+        <div id="product-list" class="row">
+            @include('partials.product-items', ['products' => $products])
         </div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -474,6 +471,22 @@
         document.getElementById('closeMenu')?.addEventListener('click', function () {
             document.getElementById('navbarNav').classList.remove('show');
             document.querySelector('.menu-overlay')?.classList.remove('show');
+        });
+        document.addEventListener('click', function (e) {
+            const isPagination = e.target.tagName === 'A' && e.target.closest('#pagination-links');
+            if (isPagination) {
+                e.preventDefault();
+                const url = e.target.href;
+
+                fetch(url, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                    .then(res => res.text())
+                    .then(html => {
+                        document.getElementById('product-list').innerHTML = html;
+                        history.pushState({}, '', url); // ✅ Cập nhật URL SEO-friendly
+                    });
+            }
         });
 
     </script>

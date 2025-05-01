@@ -12,12 +12,8 @@ use App\Models\Category;
 use App\Models\Banner;
 use App\Models\Product;
 use App\Http\Controllers\BannerController;
-Route::get('/', function () {
-    $categories = category::all(); // ✅ Lấy danh mục từ database
-    $banners = Banner::all();
-    $products = Product::all();
-    return view('home', compact('categories', 'banners', 'products')); // ✅ Truyền xuống view
-});
+Route::get('/', [ProductController::class, 'publicHome'])->name('home');
+
 Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
@@ -50,3 +46,6 @@ Route::get('/gioi-thieu', function () {
     return view('partials.about', compact('categories', 'banners'));
 });
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.show');
+// routes/web.php
+Route::get('/tattoo', [ProductController::class, 'index'])->name('products.index');
+Route::get('/tattoo/{product}', [ProductController::class, 'show'])->name('products.show');

@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use App\Models\Banner;
 class ProductController extends Controller
 {
+    public function publicHome(Request $request)
+    {
+        $categories = Category::all();
+        $banners = Banner::all();
+        $products = Product::latest()->paginate(8); // ✅ 8 sản phẩm / trang
+
+        if ($request->ajax()) {
+            return view('partials.product-items', compact('products'))->render();
+        }
+
+
+        return view('home', compact('categories', 'banners', 'products'));
+    }
     public function index()
     {
         $products = Product::with('category')->get();
@@ -78,12 +91,12 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Xóa sản phẩm thành công!');
     }
     public function show($id)
-{
-    $product = Product::findOrFail($id);
-    $categories = Category::all(); // để load menu header
-    $banners = \App\Models\Banner::all(); // để load banner nếu cần
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all(); // để load menu header
+        $banners = \App\Models\Banner::all(); // để load banner nếu cần
 
-    return view('products.detail', compact('product', 'categories', 'banners'));
-}
-  
+        return view('products.detail', compact('product', 'categories', 'banners'));
+    }
+
 }
