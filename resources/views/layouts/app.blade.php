@@ -36,9 +36,16 @@
         }
 
         @keyframes subtleMove {
-    0%, 100% { background-position: 30% 30%; }
-    50% { background-position: 70% 70%; }
-}
+
+            0%,
+            100% {
+                background-position: 30% 30%;
+            }
+
+            50% {
+                background-position: 70% 70%;
+            }
+        }
 
         .navbar-brand img {
             height: 50px;
@@ -705,26 +712,52 @@
             z-index: 999;
         }
 
-        /* Nút back-to-top ở góc phải dưới */
-        .back-to-top {
+        .back-to-top-progress {
             position: fixed;
-            bottom: 80px;
-            right: 15px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: rgb(241, 179, 179);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: transform 0.3s ease;
+            bottom: 100px;
+            right: 58px;
+            width: 10px;
+            height: 10px;
+            z-index: 1000;
+            cursor: pointer;
         }
 
-        .back-to-top:hover {
-            transform: scale(1.1);
+        .progress-circle {
+            transform: rotate(-90deg);
+            position: absolute;
+            top: 0;
+            left: 0;
         }
+
+        .progress-circle circle {
+            fill: none;
+            stroke-width: 4;
+            r: 26;
+            cx: 30;
+            cy: 30;
+        }
+
+        .progress-circle .bg {
+            stroke: #eee;
+        }
+
+        .progress-circle .progress {
+            stroke: #ff2b63;
+            stroke-dasharray: 163.36;
+            /* 2 * π * 26 */
+            stroke-dashoffset: 163.36;
+            transition: stroke-dashoffset 0.2s ease-out;
+        }
+
+        .icon-top {
+            position: absolute;
+            top: 300%;
+            left: 300%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #ff2b63;
+        }
+
 
         /* Dùng chung cho icon hình tròn */
 
@@ -734,11 +767,12 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #ff7e7e;
+            background-color: #ff5f74;
             /* Màu nền chính */
             display: flex;
             align-items: center;
             justify-content: center;
+            class="contact-icon back-to-top"
             overflow: visible;
         }
 
@@ -1025,7 +1059,8 @@
             </button>
 
             <!-- Logo nằm sau (mobile) nhưng trước (desktop) -->
-            <a class="navbar-brand order-2 order-lg-1 ms-2 ms-lg-0 header-logo-wrapper" style="border: 1px solid #ffffff !important;" href="{{ url('/') }}">
+            <a class="navbar-brand order-2 order-lg-1 ms-2 ms-lg-0 header-logo-wrapper"
+                style="border: 1px solid #ffffff !important;" href="{{ url('/') }}">
                 <img src="{{ asset('storage/uploads/logo.png') }}" alt="Logo Cửa Hàng" class="header-logo-glow">
             </a>
 
@@ -1063,7 +1098,8 @@
 
                 </ul>
                 <form action="https://zalo.me/0372625001" class="d-flex d-none d-lg-flex">
-                    <button class="btn btn-danger" type="submit" style="border: 2px solid #ffffff !important;">Đặt lịch ngay</button>
+                    <button class="btn btn-danger" type="submit" style="border: 2px solid #ffffff !important;">Đặt lịch
+                        ngay</button>
                 </form>
 
             </div>
@@ -1204,10 +1240,15 @@
         </a>
     </div>
 
-    <!-- Nút quay lên đầu trang vẫn giữ ở góc phải dưới -->
-    <a href="#" class="contact-icon back-to-top">
-        <i class="bi bi-chevron-up text-light"></i>
+    <!-- Nút quay lên đầu trang với vòng tiến trình -->
+    <a href="#" class="back-to-top-progress">
+        <svg class="progress-circle" width="60" height="60">
+            <circle class="bg" cx="30" cy="30" r="26"></circle>
+            <circle class="progress" cx="30" cy="30" r="26"></circle>
+        </svg>
+        <i class="bi bi-chevron-up icon-top"></i>
     </a>
+
     <!-- gg map -->
 
     <div class="container-fluid p-0">
@@ -1309,6 +1350,23 @@
             }
         });
         document.querySelector('.back-to-top')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+
+        const progressCircle = document.querySelector('.progress-circle .progress');
+        const pathLength = 2 * Math.PI * 26; // 2πr với r = 26
+        progressCircle.style.strokeDasharray = pathLength;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = scrollTop / docHeight;
+            progressCircle.style.strokeDashoffset = pathLength * (1 - progress);
+        });
+
+        document.querySelector('.back-to-top-progress').addEventListener('click', function (e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
