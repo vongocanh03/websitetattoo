@@ -88,7 +88,7 @@
                     <li><strong>Email:</strong> Minhanh2468001@gmail.com</li>
                     <li><strong>Địa chỉ học:</strong> Thuận Giao 21, Thuận Giao, Thuận An, Bình Dương</li>
                 </ul>
-                <a href="https://zalo.me/0395352488" class="btn btn-danger btn-lg rounded-pill">📲 Đăng ký ngay qua Zalo</a>
+                <a href="https://zalo.me/0372625001" class="btn btn-danger btn-lg rounded-pill">📲 Đăng ký ngay qua Zalo</a>
             </div>
         </div>
     </section>

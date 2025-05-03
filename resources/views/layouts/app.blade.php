@@ -175,8 +175,6 @@
         }
 
         .navbar .btn-danger {
-            padding: 10px 14px;
-            font-size: 14px;
             white-space: nowrap;
             margin-left: 10px;
             height: 100%;
@@ -442,12 +440,16 @@
             width: 100vw;
             background: rgba(0, 0, 0, 0.5);
             z-index: 998;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .menu-overlay.show {
-            display: block;
+            opacity: 1;
+            visibility: visible;
         }
+
 
         .navbar-nav .nav-item {
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -602,6 +604,9 @@
 
             .hide-on-mobile {
                 display: none !important;
+            }
+            .navbar-nav{
+                margin-left: 0 !important;
             }
         }
 
@@ -939,6 +944,7 @@
             transition: all 0.3s ease-in-out;
             font-weight: 700;
             letter-spacing: 1px;
+            font-size: 15px;
         }
 
         .navbar-nav .nav-link::after {
@@ -1022,14 +1028,14 @@
             <!-- Menu chính -->
             <div class="collapse navbar-collapse order-3 slide-left" id="navbarNav">
                 <div class="d-flex justify-content-between align-items-center d-lg-none mb-3">
-                    <form action="https://zalo.me/0395352488" class="m-0">
+                    <form action="https://zalo.me/0372625001" class="m-0">
                         <button class="btn btn-danger btn-sm" type="submit">Đặt lịch ngay</button>
                     </form>
                     <button id="closeMenu" class="btn btn-link text-white fs-3" style="border: none;">&times;</button>
                 </div>
 
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 10px;">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Trang chủ</a>
                     </li>
@@ -1051,7 +1057,7 @@
                     @endforeach
 
                 </ul>
-                <form action="https://zalo.me/0395352488" class="d-flex d-none d-lg-flex">
+                <form action="https://zalo.me/0372625001" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
                 </form>
 
@@ -1097,11 +1103,11 @@
 
                 <!-- Zalo -->
                 <div class="col-12 col-sm-6 col-md-4 text-center">
-                    <a href="https://zalo.me/0395352488" target="_blank" class="profile-box d-block mb-2">
+                    <a href="https://zalo.me/0372625001" target="_blank" class="profile-box d-block mb-2">
                         <img src="{{ asset('storage/uploads/image.png') }}" alt="Zalo Minh Anh"
                             class="img-fluid shadow profile-img">
                     </a>
-                    <a href="https://zalo.me/0395352488" target="_blank" class="zalo-button">
+                    <a href="https://zalo.me/0372625001" target="_blank" class="zalo-button">
                         <i class="bi bi-chat-dots me-2"></i> Nhắn tin Zalo
                     </a>
                 </div>
@@ -1122,7 +1128,7 @@
                     <h6 class="fw-bold text-uppercase mb-3" style="color: #cc0033;">Liên hệ</h6>
                     <ul class="list-unstyled small">
                         <li><strong>Địa chỉ:</strong> Đường Thuận Giao 21, P. Thuận Giao, Thuận An, Bình Dương</li>
-                        <li><strong>Hotline:</strong> <a href="tel:0395352488" class="footer-link">0395 352 488</a> – <a
+                        <li><strong>Hotline:</strong> <a href="tel:0372625001" class="footer-link">0395 352 488</a> – <a
                                 href="tel:0372625001" class="footer-link">0372 625 001</a></li>
                         <li><strong>Email:</strong> <a href="mailto:minhanh2468001@gmail.com"
                                 class="footer-link">minhanh2468001@gmail.com</a></li>
@@ -1170,14 +1176,14 @@
     <!-- Nút hỗ trợ nổi góc phải -->
     <!-- Khối các nút mạng xã hội giữa màn hình -->
     <div class="floating-contact-group">
-        <a href="https://zalo.me/0395352488" class="circle-pulse" target="_blank">
+        <a href="https://zalo.me/0372625001" class="circle-pulse" target="_blank">
             <img src="{{ asset('storage/uploads/zl.png') }}" alt="Zalo" style="width: 28px; height: 28px; z-index: 2;">
             <span></span>
             <span></span>
             <span></span>
         </a>
 
-        <a href="tel:0395352488" class="circle-pulse hide-on-mobile" target="_blank">
+        <a href="tel:0372625001" class="circle-pulse hide-on-mobile" target="_blank">
             <img src="{{ asset('storage/uploads/hl.png') }}" alt="Hotline"
                 style="width: 28px; height: 28px; z-index: 2;">
             <span></span>
@@ -1217,16 +1223,35 @@
             const toggler = document.querySelector('.navbar-toggler');
             const navMenu = document.getElementById('navbarNav');
             const overlay = document.querySelector('.menu-overlay');
-
-            toggler.addEventListener('click', function () {
-                overlay.classList.toggle('show');
+            const bsCollapse = new bootstrap.Collapse(navMenu, {
+                toggle: false
             });
 
-            overlay.addEventListener('click', function () {
-                navMenu.classList.remove('show');
+            // Khi nhấn nút menu
+            toggler?.addEventListener('click', function () {
+                if (navMenu.classList.contains('show')) {
+                    bsCollapse.hide();
+                } else {
+                    bsCollapse.show();
+                }
+            });
+
+            // Khi mở menu => hiện overlay
+            navMenu.addEventListener('show.bs.collapse', function () {
+                overlay.classList.add('show');
+            });
+
+            // Khi đóng menu => ẩn overlay
+            navMenu.addEventListener('hide.bs.collapse', function () {
                 overlay.classList.remove('show');
             });
+
+            // Nhấn vào overlay thì đóng menu
+            overlay.addEventListener('click', function () {
+                bsCollapse.hide();
+            });
         });
+
         document.getElementById('closeMenu')?.addEventListener('click', function () {
             document.getElementById('navbarNav').classList.remove('show');
             document.querySelector('.menu-overlay')?.classList.remove('show');

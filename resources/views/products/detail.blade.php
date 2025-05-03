@@ -142,7 +142,7 @@
                     <button class="show-more-btn" onclick="toggleDescription()">
                         Xem thêm <span class="icon">▼</span>
                     </button>
-                    <a href="https://zalo.me/0395352488" class="show-more-btn text-decoration-none d-inline-block text-center">
+                    <a href="https://zalo.me/0372625001" class="show-more-btn text-decoration-none d-inline-block text-center">
                         Đặt lịch xăm
                     </a>
 
