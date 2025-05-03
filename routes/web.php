@@ -50,3 +50,8 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.
 Route::get('/tattoo', [ProductController::class, 'index'])->name('products.index');
 Route::get('/tattoo/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/danh-muc/{id}', [ProductController::class, 'category'])->name('category.products');
+Route::get('/dao-tao-hoc-vien', function () {
+    $categories = category::all(); // nếu header dùng categories
+    $banners = Banner::all(); // nếu header dùng banners
+    return view('partials.training', compact('categories', 'banners'));
+});

@@ -2,39 +2,151 @@
 
 @section('title', 'Giới thiệu Minh Anh Tattoo')
 
+@push('styles')
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+        .section-light {
+            background-color: rgb(255, 255, 255);
+            color: #333;
+            padding: 40px 0;
+
+        }
+
+        .tattoo-title {
+            font-family: 'Lobster', cursive;
+            font-size: 3rem;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tattoo-subtitle {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.25rem;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        .img-fluid {
+            box-shadow: 0 6px 20px rgba(255, 102, 178, 0.3);
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (min-width: 992px) {}
+
+        @media (max-width: 768px) {
+            .tattoo-title {
+                font-size: 2.2rem;
+            }
+
+            .tattoo-subtitle {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                max-width: 1200px !important;
+            }
+        }
+    </style>
+@endpush
+
+
 @section('content')
-<div class="container my-5" id="about-section">
-    <div class="text-center mb-5">
-        <h1 style="font-weight: bold; text-transform: uppercase; color: #ff0066;">Giới thiệu Minh Anh Tattoo</h1>
-        <hr style="width: 80px; border: 2px solid #ff0066; margin: 15px auto;">
-    </div>
+    <div class="section-light">
+        <div class="container" id="about-section">
 
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6">
-            <h2>Giới thiệu về Minh Anh Tattoo</h2>
-            <p style="font-size: 18px; line-height: 1.8;">
-                <strong>Minh Anh Tattoo</strong> được thành lập từ năm 2018 bởi hai nghệ nhân <strong>Minh Lang</strong> và <strong>Anh Thư</strong> — những người đã có hơn 5 năm kinh nghiệm trong lĩnh vực xăm hình nghệ thuật, xỏ khuyên, găm bi chuyên nghiệp.
-                <br><br>
-                Với tâm huyết và đam mê, chúng tôi cam kết mang đến cho khách hàng trải nghiệm tuyệt vời nhất: từ việc tư vấn chi tiết mẫu xăm phù hợp với cá tính, cho đến quy trình thực hiện bằng những thiết bị an toàn, vệ sinh đạt chuẩn cao nhất.
-            </p>
-        </div>
-        <div class="col-md-6">
-            <img src="{{ asset('storage/uploads/about2.jpg') }}" alt="Giới thiệu Minh Anh Tattoo" class="img-fluid rounded shadow">
-        </div>
-    </div>
+            <!-- Tiêu đề -->
+            <h1 class="tattoo-title">
+                XĂM NGHỆ THUẬT BÌNH DƯƠNG – <span style="color: #ff7e7e;">MINH ANH TATTOO</span>
+            </h1>
 
-    <div class="row align-items-center mb-5 flex-md-row-reverse">
-        <div class="col-md-6">
-            <h2>Không gian nghệ thuật & đội ngũ chuyên nghiệp</h2>
-            <p style="font-size: 18px; line-height: 1.8;">
-                Chúng tôi tự hào sở hữu đội ngũ thợ xăm chuyên nghiệp, luôn sẵn sàng tư vấn, thiết kế và đồng hành cùng khách hàng từ ý tưởng đến khi hoàn thiện tác phẩm.
-                <br><br>
-                Minh Anh Tattoo chuyên thực hiện nhiều thể loại hình xăm đa dạng: từ mini tattoo, châu Á, nhân cổ, cho đến các thiết kế cá nhân hóa riêng biệt. Đặc biệt, chúng tôi có nghệ nhân xăm chuyên về <strong>tattoo che khuyết điểm</strong> giúp khách hàng tự tin hơn với vẻ ngoài của mình.
-            </p>
-        </div>
-        <div class="col-md-6">
-            <img src="{{ asset('storage/uploads/about2.jpg') }}" alt="Không gian Minh Anh Tattoo" class="img-fluid rounded shadow">
+            <h2 class="tattoo-subtitle">MINH ANH TATTOO – ĐỊA ĐIỂM XĂM HÌNH NGHỆ THUẬT UY TÍN, AN TOÀN TẠI THUẬN AN – BÌNH
+                DƯƠNG</h2>
+
+            <!-- Giới thiệu -->
+            <div class="mb-5">
+
+                <p>
+                    - <strong>Minh Anh Tattoo</strong> được thành lập từ năm 2018 bởi hai nghệ nhân <strong>Minh
+                        Lang</strong>
+                    và <strong>Anh Thư</strong> – những người có hơn 5 năm kinh nghiệm trong lĩnh vực <strong>xăm hình nghệ
+                        thuật, xỏ khuyên và găm bi</strong> chuyên nghiệp.
+                    <br><br>
+                    - Với tâm huyết và đam mê nghề, chúng tôi cam kết mang đến cho khách hàng sự hài lòng tối đa: từ việc
+                    <strong>tư vấn kỹ lưỡng các mẫu xăm phù hợp nhất với phong cách cá nhân</strong>, cho đến quy trình thực
+                    hiện bằng thiết bị hiện đại, vệ sinh tuyệt đối, đảm bảo an toàn theo tiêu chuẩn cao nhất.
+                </p>
+
+                <!-- Ảnh lớn bên dưới -->
+                <div class="text-center mt-4">
+                    <img src="{{ asset('storage/uploads/about2.jpg') }}" alt="Giới thiệu Minh Anh Tattoo" class="img-fluid"
+                        style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+
+            <!-- Không gian nghệ thuật -->
+            <div>
+                <h2 class="mb-3" style="color: #000000; text-align: center">Không gian nghệ thuật & đội ngũ chuyên nghiệp
+                </h2>
+                <p>
+                    - Chúng tôi tự hào với <strong>không gian xăm hiện đại</strong> và đội ngũ thợ xăm giàu kinh nghiệm,
+                    luôn
+                    sẵn sàng đồng hành cùng khách hàng trong suốt hành trình từ ý tưởng đến khi hoàn thiện hình xăm.
+                    <br><br>
+                    - Minh Anh Tattoo chuyên thực hiện đa dạng thể loại hình xăm như: <strong>mini tattoo, phong cách châu
+                        Á,
+                        nhân cổ</strong>, cũng như các thiết kế cá nhân hóa riêng biệt theo yêu cầu của từng khách hàng.
+                    <br><br>
+                    - Đặc biệt, chúng tôi có một <strong>nghệ nhân chuyên biệt trong lĩnh vực tattoo che khuyết
+                        điểm</strong>
+                    – hỗ trợ khách hàng che sẹo, làm đẹp da, giúp bạn thêm phần tự tin và hài lòng với diện mạo của chính
+                    mình.
+                </p>
+
+                <!-- Ảnh lớn bên dưới -->
+                <div class="text-center mt-4">
+                    <img src="{{ asset('storage/uploads/about8.jpg') }}" alt="Không gian Minh Anh Tattoo" class="img-fluid"
+                        style="max-width: 100%; height: auto;">
+                </div>
+
+                <p style="padding-top: 30px;">
+                    - Ghé trực tiếp <strong>Minh Anh Tattoo – địa chỉ uy tín tại Thuận Giao, Thuận An (Bình Dương)</strong>,
+                    để được tư vấn
+                    và trải nghiệm không gian xăm đậm chất nghệ thuật cùng đội ngũ nghệ nhân giàu kinh nghiệm!
+                </p>
+                <div class="text-center mt-4">
+                    <img src="{{ asset('storage/uploads/about4.jpg') }}" alt="Không gian Minh Anh Tattoo" class="img-fluid"
+                        style="max-width: 100%; height: auto;">
+                </div>
+                <p style="padding-top: 30px;">
+                    - Đây chính là không gian của <strong>Minh Anh Tattoo tại Thuận Giao, Thuận An (Bình Dương)</strong> –
+                    nơi bạn có thể trực
+                    tiếp đến trải nghiệm quy trình xăm nghệ thuật chuyên nghiệp, an toàn và tận tâm từ đội ngũ thợ lành
+                    nghề.
+                </p>
+            </div>
+
         </div>
     </div>
-</div>
 @endsection

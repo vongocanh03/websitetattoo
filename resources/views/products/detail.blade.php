@@ -18,7 +18,7 @@
         .product-detail {
             padding: 20px;
             background: linear-gradient(145deg, #ffffff, #ffe6e6);
-            border-top: 5px solid #ff7e7e;
+            border-top: 5px solid  #ffffff;
             border-bottom: 5px solid #ff0000;
             box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
         }
