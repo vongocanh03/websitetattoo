@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -7,13 +8,10 @@
     <title>@yield('title', 'Web Xăm Hình')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Orbitron:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Orbitron:wght@600;700;800&display=swap"
         rel="stylesheet">
-    @stack('styles')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    @stack('styles')
 
     <style>
         @media (max-width: 991px) {
@@ -29,11 +27,18 @@
         }
 
         .navbar {
-            background-color: #ff7e7e !important;
+            background: radial-gradient(circle at 30% 30%, #ff7e7e 0%, #ff0055 100%);
+            background-size: 120% 120%;
+            animation: subtleMove 15s ease-in-out infinite;
             position: sticky;
             top: 0;
             z-index: 1030;
         }
+
+        @keyframes subtleMove {
+    0%, 100% { background-position: 30% 30%; }
+    50% { background-position: 70% 70%; }
+}
 
         .navbar-brand img {
             height: 50px;
@@ -605,7 +610,8 @@
             .hide-on-mobile {
                 display: none !important;
             }
-            .navbar-nav{
+
+            .navbar-nav {
                 margin-left: 0 !important;
             }
         }
@@ -900,7 +906,6 @@
         .header-logo-wrapper {
             position: relative;
             width: 70px;
-            height: 70px;
             overflow: hidden;
             animation: shake 4s infinite ease-in-out;
         }
@@ -1020,7 +1025,7 @@
             </button>
 
             <!-- Logo nằm sau (mobile) nhưng trước (desktop) -->
-            <a class="navbar-brand order-2 order-lg-1 ms-2 ms-lg-0 header-logo-wrapper" href="{{ url('/') }}">
+            <a class="navbar-brand order-2 order-lg-1 ms-2 ms-lg-0 header-logo-wrapper" style="border: 1px solid #ffffff !important;" href="{{ url('/') }}">
                 <img src="{{ asset('storage/uploads/logo.png') }}" alt="Logo Cửa Hàng" class="header-logo-glow">
             </a>
 
@@ -1058,7 +1063,7 @@
 
                 </ul>
                 <form action="https://zalo.me/0372625001" class="d-flex d-none d-lg-flex">
-                    <button class="btn btn-danger" type="submit">Đặt lịch ngay</button>
+                    <button class="btn btn-danger" type="submit" style="border: 2px solid #ffffff !important;">Đặt lịch ngay</button>
                 </form>
 
             </div>

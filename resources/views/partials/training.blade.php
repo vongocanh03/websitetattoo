@@ -83,9 +83,9 @@
                 <h4 class="text-danger fw-bold mb-3">📩 Thông tin liên hệ & Đăng ký</h4>
                 <ul class="lh-lg mb-3">
                     <li><strong>Zalo:</strong> 0395 352 488 – 0372 625 001</li>
-                    <li><strong>Facebook:</strong> <a href="https://www.facebook.com/Minhanhtattoo"
+                    <li><strong>Facebook:</strong> <a href="https://www.facebook.com/luuminhcang?locale=vi_VN"
                             target="_blank">Minhanhtattoo</a></li>
-                    <li><strong>Email:</strong> Minhanh2468001@gmail.com</li>
+                    <li><strong>Email:</strong> minhanh2468001@gmail.com</li>
                     <li><strong>Địa chỉ học:</strong> Thuận Giao 21, Thuận Giao, Thuận An, Bình Dương</li>
                 </ul>
                 <a href="https://zalo.me/0372625001" class="btn btn-danger btn-lg rounded-pill">📲 Đăng ký ngay qua Zalo</a>
