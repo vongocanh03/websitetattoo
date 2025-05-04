@@ -1,28 +1,84 @@
 @extends('layouts.app')
 
 @section('title', 'Trang chủ')
+@push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+    <style>
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fade-in-image {
+            opacity: 0;
+            animation: fadeInSmooth 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeInSmooth {
+            0% {
+                opacity: 0;
+                transform: scale(1.02);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .banner-img {
+                height: 250px !important;
+            }
+        }
+    </style>
+@endpush
 @section('content')
 
     <!-- Banner -->
-    <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @foreach($banners as $key => $banner)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/' . $banner->image) }}" class="d-block w-100 banner-img" alt="Banner">
+    <!-- Banner -->
+    <!-- Banner -->
+    <div class="swiper mySwiper mb-4" style="width: 100%; max-height: 650px;">
+        <div class="swiper-wrapper">
+            @foreach($banners as $banner)
+                <div class="swiper-slide">
+                    <img src="{{ asset('storage/' . $banner->image) }}" class="w-100 banner-img fade-in-image lazyload"
+                        data-src="{{ asset('storage/' . $banner->image) }}" alt="Banner" loading="lazy"
+                        style="object-fit: cover; width: 100%; height: 650px;">
+
                 </div>
             @endforeach
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
+        <div class="swiper-pagination"></div>
     </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true
+            },
+            loop: true,
+            grabCursor: true,
+            autoplay: {
+                delay: 5000, // thời gian giữa các slide
+                disableOnInteraction: false,
+            },
+            speed: 1200, // tốc độ chuyển slide (ms) → chậm và mượt hơn
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            }
+        });
+
+    </script>
     <!-- Giới thiệu -->
     <div class="container my-5" id="about-section">
         <div class="row align-items-center mb-5">
