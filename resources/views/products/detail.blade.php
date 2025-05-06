@@ -7,12 +7,12 @@
     <!-- Font đẹp, hỗ trợ tiếng Việt -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Orbitron:wght@700&display=swap"
         rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #fff;
             color: #2c2c2c;
-            font-family: 'Be Vietnam Pro', sans-serif;
+            font-family: 'Barlow', sans-serif;
         }
 
         .product-detail {
@@ -38,7 +38,7 @@
             font-size: 2.4rem;
             font-weight: 800;
             color: #ff0000;
-            font-family: 'Be Vietnam Pro', sans-serif;
+            font-family: 'Barlow', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
             border-left: 6px solid #ff7e7e;

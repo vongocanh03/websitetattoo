@@ -78,8 +78,10 @@
 
             <!-- Tiêu đề -->
             <h1 class="tattoo-title">
-                XĂM NGHỆ THUẬT BÌNH DƯƠNG – <span style="color: #ff7e7e;">MINH ANH TATTOO</span>
+                XĂM NGHỆ THUẬT BÌNH DƯƠNG<br>
+                <span style="color: #ff7e7e;">MINH ANH TATTOO</span>
             </h1>
+
 
             <h2 class="tattoo-subtitle">MINH ANH TATTOO – ĐỊA ĐIỂM XĂM HÌNH NGHỆ THUẬT UY TÍN, AN TOÀN TẠI THUẬN AN – BÌNH
                 DƯƠNG</h2>
@@ -88,8 +90,8 @@
             <div class="mb-5">
 
                 <p>
-                    - <strong>Minh Anh Tattoo</strong> được thành lập từ năm 2018 bởi hai nghệ nhân <strong>Minh
-                        Lang</strong>
+                    - <strong>Minh Anh Tattoo</strong> được thành lập từ năm 2018 bởi hai Artist <strong>Minh
+                        Cang</strong>
                     và <strong>Anh Thư</strong> – những người có hơn 5 năm kinh nghiệm trong lĩnh vực <strong>xăm hình nghệ
                         thuật, xỏ khuyên và găm bi</strong> chuyên nghiệp.
                     <br><br>
@@ -118,7 +120,7 @@
                         Á,
                         nhân cổ</strong>, cũng như các thiết kế cá nhân hóa riêng biệt theo yêu cầu của từng khách hàng.
                     <br><br>
-                    - Đặc biệt, chúng tôi có một <strong>nghệ nhân chuyên biệt trong lĩnh vực tattoo che khuyết
+                    - Đặc biệt, chúng tôi có một <strong>thợ xăm chuyên biệt trong lĩnh vực tattoo che khuyết
                         điểm</strong>
                     – hỗ trợ khách hàng che sẹo, làm đẹp da, giúp bạn thêm phần tự tin và hài lòng với diện mạo của chính
                     mình.
@@ -133,7 +135,7 @@
                 <p style="padding-top: 30px;">
                     - Ghé trực tiếp <strong>Minh Anh Tattoo – địa chỉ uy tín tại Thuận Giao, Thuận An (Bình Dương)</strong>,
                     để được tư vấn
-                    và trải nghiệm không gian xăm đậm chất nghệ thuật cùng đội ngũ nghệ nhân giàu kinh nghiệm!
+                    và trải nghiệm không gian xăm đậm chất nghệ thuật cùng đội ngũ thợ xăm giàu kinh nghiệm!
                 </p>
                 <div class="text-center mt-4">
                     <img src="{{ asset('storage/uploads/about4.jpg') }}" alt="Không gian Minh Anh Tattoo" class="img-fluid"

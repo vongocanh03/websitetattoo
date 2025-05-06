@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     @stack('styles')
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
 
     <style>
         @media (max-width: 991px) {
@@ -23,7 +24,7 @@
         ///////////////
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Barlow', sans-serif;
         }
 
         .navbar {
@@ -64,9 +65,16 @@
             text-transform: uppercase;
             position: relative;
             transition: all 0.3s ease;
-            letter-spacing: 1px;
+            letter-spacing: 2px !important;
+            font-family: 'Barlow', sans-serif;
+            
+        
         }
+        .nav-link a {
+            letter-spacing: 10px !important;
+            word-spacing: 20px; 
 
+        }
         .navbar-nav .nav-link::after {
             content: '';
             position: absolute;
@@ -286,7 +294,7 @@
 
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Barlow', sans-serif;
         }
 
         .navbar {
@@ -624,7 +632,7 @@
         }
 
         .card-title {
-            font-family: 'Be Vietnam Pro', sans-serif;
+            font-family: 'Barlow', sans-serif;
             font-size: 14px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -983,7 +991,6 @@
             transition: all 0.3s ease-in-out;
             font-weight: 700;
             letter-spacing: 1px;
-            font-size: 15px;
         }
 
         .navbar-nav .nav-link::after {
@@ -1075,7 +1082,7 @@
                 </div>
 
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 10px;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 40px;">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Trang chủ</a>
                     </li>
@@ -1095,7 +1102,9 @@
                             @endif
                         </li>
                     @endforeach
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/dich-vu-xo-khuyen') }}">Xỏ Khuyên</a>
+                    </li>    
                 </ul>
                 <form action="https://zalo.me/0372625001" class="d-flex d-none d-lg-flex">
                     <button class="btn btn-danger" type="submit" style="border: 2px solid #ffffff !important;">Đặt lịch

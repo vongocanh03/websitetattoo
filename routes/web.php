@@ -55,3 +55,8 @@ Route::get('/dao-tao-hoc-vien', function () {
     $banners = Banner::all(); // nếu header dùng banners
     return view('partials.training', compact('categories', 'banners'));
 });
+Route::get('/dich-vu-xo-khuyen', function () {
+    $categories = category::all(); // nếu header dùng categories
+    $banners = Banner::all(); // nếu header dùng banners
+    return view('partials.piercing', compact('categories', 'banners'));
+});

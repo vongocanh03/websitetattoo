@@ -3,7 +3,7 @@
 @section('title', 'Trang chủ')
 @push('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <style>
         .swiper-slide {
             text-align: center;
@@ -92,7 +92,7 @@
                 <p class="mt-3" style="font-size: 20px; line-height: 1.8; color: #333;">
                     Được thành lập vào năm 2018, Minh Anh Tattoo tự hào là cửa hàng xăm nghệ thuật chuyên nghiệp tại
                     Bình Dương.
-                    Với đội ngũ nghệ nhân có kinh nghiệm, tay nghề cao cùng không gian hiện đại, chúng tôi cam kết mang
+                    Với đội ngũ thợ xăm có kinh nghiệm, tay nghề cao cùng không gian hiện đại, chúng tôi cam kết mang
                     đến sự hài lòng tuyệt đối cho khách hàng.
                 </p>
                 <div class="d-flex align-items-center justify-content-center mt-4">
@@ -111,6 +111,7 @@
                         class="img-fluid img-about">
                 </div>
             </div>
+            
         </div>
     </div>
 
@@ -136,7 +137,7 @@
                     <span class="text-black">TATTOO</span>
                 </div>
 
-                <p class="mt-3" style="font-size: 20px; line-height: 1.8; color: #333;">
+                <p class="mt-3" style="font-size: 20px; line-height: 1.8; color: #333; font-family: Barlow, sans-serif !important;">
                     Tại Minh Anh Tattoo, chúng tôi không chỉ là một cửa hàng xăm hình – chúng tôi là nơi khơi nguồn đam mê
                     và chắp cánh cho những nghệ sĩ tattoo tương lai. Chương trình đào tạo được thiết kế bài bản từ cơ bản
                     đến nâng cao,

@@ -133,7 +133,7 @@
         }
 
         .card-title {
-            font-family: 'Be Vietnam Pro', sans-serif;
+            font-family: 'Barlow', sans-serif;
             font-size: 14px;
             font-weight: 800;
             letter-spacing: 0.5px;
