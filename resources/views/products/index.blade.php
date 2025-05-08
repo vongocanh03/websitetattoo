@@ -30,7 +30,7 @@
                         <div class="description-preview" style="max-height: 120px; overflow: hidden; position: relative;">
                             {!! Str::limit(strip_tags($product->description), 300, '...') !!}
                         </div>
-                        <a href="{{ route('products.show', $product->id) }}" class="text-primary">Xem chi tiết</a>
+                        <a href="{{ route('products.custom_show', $product->id) }}" class="text-primary">Xem chi tiết</a>
                     </td>
                     <td>
                         @if($product->media)

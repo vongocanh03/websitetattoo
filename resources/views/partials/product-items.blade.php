@@ -7,7 +7,7 @@
             @foreach($categoryProducts[$category->id] as $product)
                 <div class="col-6 col-md-3 mb-3">
                     <div class="card shadow-sm border-0 h-100 overflow-hidden">
-                        <a href="{{ route('products.show', $product->id) }}">
+                        <a href="{{ route('products.custom_show', $product->id) }}">
                             @php $ext = strtolower(pathinfo($product->media, PATHINFO_EXTENSION)); @endphp
                             @if(in_array($ext, ['jpg', 'jpeg', 'png', 'gif']))
                                 <img src="{{ asset('storage/' . $product->media) }}" class="card-img-top w-100"
@@ -21,7 +21,7 @@
                         </a>
                         <div class="card-body text-center">
                             <h5 class="card-title">
-                                <a href="{{ route('products.show', $product->id) }}"
+                                <a href="{{ route('products.custom_show', $product->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     {{ $product->name }}
                                 </a>
